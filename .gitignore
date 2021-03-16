@@ -1,2 +1,8 @@
-node_modules
-.DS_Store
+# OS, ENV variables, IDE
+.DS_STORE
+.env
+# Directories
+dist/
+node_modules/
+# Files
+things-to-do.md
