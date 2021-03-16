@@ -15,8 +15,9 @@ module.exports = {
   entry: './src',
   // output: file and path where the created bundle should be emitted
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.[hash].js',
+    publicPath: '/',
   },
   module: {
     // tell webpack transform files ending with .js(x) using babel-loader except in node_modules
