@@ -2,7 +2,7 @@ import React from 'react';
 
 const App = () => (
   <h1>
-    Mackee&apos;s Pets
+    React App
   </h1>
 );
 
