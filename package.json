@@ -1,30 +1,36 @@
 {
-  "name": "kyandrial",
-  "version": "1.0.0",
+  "name": "mackee-pets",
+  "version": "0.1.0",
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --watch"
+    "build": "webpack --mode=production",
+    "lint": "eslint -f table",
+    "start": "webpack serve --mode development --content-base src --hot --inline"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jennikate/kyandrial.git"
+    "url": "git+https://github.com/jennikate/mackee-pets.git"
   },
   "keywords": [],
   "author": "JenniKate Wallace",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jennikate/kyandrial/issues"
+    "url": "https://github.com/jennikate/mackee-pets/issues"
   },
-  "homepage": "https://github.com/jennikate/kyandrial#readme",
+  "homepage": "https://github.com/jennikate/mackee-pets#readme",
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.25.1",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
