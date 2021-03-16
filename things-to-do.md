@@ -3,8 +3,8 @@
 ## Setup
 [x] setup basics
 [] setup react-testing-library
-[] setup repo protection
-[] setup eslint
+[x] setup repo protection
+[x] setup eslint
 
 ## Design
 [] plan for UI

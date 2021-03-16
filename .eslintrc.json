@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "plugins": [
+    "babel",
+    "filenames",
+    "import",
+    "jest",
+    "jsx-a11y",
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    "no-unused-vars": "error",
+    "max-len": ["error", { "code": 200 }]
+  }
+}
