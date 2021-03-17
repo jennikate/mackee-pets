@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode=production",
     "lint": "eslint -f table",
-    "start": "webpack serve --mode development --content-base src --hot --inline"
+    "start:client": "webpack serve --mode development --content-base src --hot --inline",
+    "start": "npm run build && nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
     "url": "https://github.com/jennikate/mackee-pets/issues"
   },
   "homepage": "https://github.com/jennikate/mackee-pets#readme",
+  "proxy": "http://localhost:8080",
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
@@ -41,7 +43,15 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "cookie-session": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "passport": "^0.4.1",
+    "passport-bnet": "^2.0.0",
+    "passport-google-oauth20": "^2.0.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "simple-oauth2": "^4.2.0"
   }
 }

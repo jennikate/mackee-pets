@@ -1,5 +1,6 @@
 # OS, ENV variables, IDE
 .DS_STORE
+.env
 # Directories
 dist/
 node_modules/
