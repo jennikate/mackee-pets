@@ -26,6 +26,7 @@
   ],
   "rules": {
     "no-unused-vars": "error",
-    "max-len": ["error", { "code": 200 }]
+    "max-len": ["error", { "code": 200 }],
+    "no-underscore-dangle":  ["error", { "allow": ["_reduceToken"] }]
   }
 }
