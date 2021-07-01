@@ -2,6 +2,7 @@
 const path = require('path');
 // enable webpack to work with html
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const htmlPlugin = new HtmlWebpackPlugin({
   template: './src/index.html',
@@ -31,8 +32,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
+    alias: {
+      process: 'process/browser',
+    },
   },
-  plugins: [htmlPlugin],
+  plugins: [
+    htmlPlugin,
+    new Dotenv(),
+  ],
   devServer: {
     // in order to use `<Router>`, historyApiFallback needs to be enabled
     historyApiFallback: true,
