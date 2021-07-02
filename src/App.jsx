@@ -5,8 +5,8 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
-import Ceralie from './pages/ceralie';
-import Home from './pages/home';
+import CharacterOverview from './pages/CharacterOverview';
+import Home from './pages/Home';
 
 const App = () => (
   <Router>
@@ -17,14 +17,14 @@ const App = () => (
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/ceralie">Ceralie</Link>
+            <Link to="/characters">Characters</Link>
           </li>
         </ul>
       </nav>
 
       <Switch>
-        <Route path="/ceralie">
-          <Ceralie />
+        <Route path="/characters">
+          <CharacterOverview />
         </Route>
         <Route path="/">
           <Home />

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const Ceralie = () => {
+const CharacterOverview = () => {
   /*
   * Call the battlenet API with my credentials
   * This allows me to return information about
@@ -28,7 +28,7 @@ const Ceralie = () => {
   */
   const getAccessToken = () => {
     const myHeaders = new Headers();
-    myHeaders.append('Authorization', 'Basic ');
+    myHeaders.append('Authorization', 'Basic =');
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
 
     const urlencoded = new URLSearchParams();
@@ -54,8 +54,8 @@ const Ceralie = () => {
    * just update the url request
   */
 
-  const getUser = async () => {
-    const urlParts = 'wow/character/argent-dawn/ceralie/appearance';
+  const getUser = async (realm, character) => {
+    const urlParts = `wow/character/${realm}/${character}/appearance`;
     if (token) {
       try {
         const response = await axios.get(`https://${region}.${blizzUrl}/profile/${urlParts}?namespace=${namespace}&locale=${locale}&access_token=${token.access_token}`, {
@@ -73,7 +73,7 @@ const Ceralie = () => {
 
   useEffect(() => {
     if (token) {
-      getUser();
+      getUser('argent-dawn', 'addie');
     }
   }, [token]);
 
@@ -89,4 +89,4 @@ const Ceralie = () => {
   );
 };
 
-export default Ceralie;
+export default CharacterOverview;
