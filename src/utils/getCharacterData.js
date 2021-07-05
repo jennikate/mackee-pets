@@ -13,6 +13,7 @@ const getCharacterData = async (token, realm, character, item) => {
   const locale = 'en_US';
 
   const urlParts = `wow/character/${realm}/${character}/${item}`;
+  let characterData;
 
   try {
     const response = await axios.get(`https://${region}.${blizzUrl}/profile/${urlParts}?namespace=${namespace}&locale=${locale}&access_token=${token}`, {
@@ -20,10 +21,12 @@ const getCharacterData = async (token, realm, character, item) => {
         Authorization: `Bearer ${token.access_token}`,
       },
     });
-    return response.data;
+    characterData = response.data;
   } catch (error) {
     console.error(error);
   }
+
+  return characterData;
 };
 
 export default getCharacterData;
