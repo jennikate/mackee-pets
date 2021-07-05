@@ -12,7 +12,7 @@ const CharacterOverview = () => {
   */
   const [token, setToken] = useState();
   const [userData, setUserData] = useState();
-  const [filteredPetList, setFilteredPetList] = useState();
+  // const [filteredPetList, setFilteredPetList] = useState();
   const [petsWithImages, setPetsWithImages] = useState([]);
 
   const wait = (ms) => new Promise(
@@ -40,6 +40,7 @@ const CharacterOverview = () => {
           axios
             .get(`${pet.species.key.href}&locale=${locale}&access_token=${token.access_token}`)
             .then((petResp) => {
+              // pets with images are not being set back into state, its returning null on console log
               setPetsWithImages({ petsWithImages: [...petsWithImages, { ...pet.data, pet_image: petResp.data.icon }] });
             })
             .catch(() => {
@@ -50,18 +51,17 @@ const CharacterOverview = () => {
       .catch((err1) => console.log(err1.message));
   };
 
-  const filterPets = () => {
-    setFilteredPetList(userData.pets.filter((pet) => (pet.level === 25 && pet.quality.type === 'RARE')));
-  };
+  // const filterPets = () => {
+  //   setFilteredPetList(userData.pets.filter((pet) => (pet.level === 25 && pet.quality.type === 'RARE')));
+  // };
+
+  // useEffect(() => {
+  //   if (userData) {
+  //     filterPets();
+  //   }
+  // }, [userData]);
 
   useEffect(() => {
-    if (userData) {
-      filterPets();
-    }
-  }, [userData]);
-
-  useEffect(() => {
-    console.log('getting');
     if (token) {
       getCharacterData();
     }
@@ -77,7 +77,7 @@ const CharacterOverview = () => {
   return (
     <>
       <h1>Rare max level pets</h1>
-      <ul>
+      {/* <ul>
         {
           petsWithImages.map((pet) => {
             console.log(pet);
@@ -93,7 +93,7 @@ const CharacterOverview = () => {
             );
           })
         }
-      </ul>
+      </ul> */}
     </>
   );
 };
