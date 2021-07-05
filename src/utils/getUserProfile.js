@@ -17,7 +17,7 @@ const getUserProfile = async (token) => {
   try {
     response = await axios.get(`https://${region}.${blizzUrl}/profile/${urlParts}?namespace=${namespace}&locale=${locale}&access_token=${token}`, {
       headers: {
-        Authorization: `Bearer ${token.access_token}`,
+        Authorization: `Bearer ${token}`,
       },
       redirect: 'follow',
     });

@@ -17,7 +17,6 @@ const CharacterOverview = () => {
 
   async function fetchData() {
     setIsLoading(true);
-    // const response = await getCharacterData(token.access_token, 'argent-dawn', 'addie', 'appearance');
     const response = await getUserProfile(token.access_token);
     setUserData(response);
     setIsLoading(false);
@@ -34,7 +33,6 @@ const CharacterOverview = () => {
   }, []);
 
   if (!userData) { return null; }
-
   return (
     <>
       <h1>name</h1>
