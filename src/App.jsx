@@ -6,6 +6,7 @@ import {
   Link,
 } from 'react-router-dom';
 import CharacterOverview from './pages/CharacterOverview';
+import CharacterPets from './pages/CharacterPets';
 import Home from './pages/Home';
 
 const App = () => (
@@ -19,12 +20,18 @@ const App = () => (
           <li>
             <Link to="/characters">Characters</Link>
           </li>
+          <li>
+            <Link to="/pets">Pets</Link>
+          </li>
         </ul>
       </nav>
 
       <Switch>
         <Route path="/characters">
           <CharacterOverview />
+        </Route>
+        <Route path="/pets">
+          <CharacterPets />
         </Route>
         <Route path="/">
           <Home />
