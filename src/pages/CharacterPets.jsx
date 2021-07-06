@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-one-expression-per-line */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -29,27 +30,33 @@ const CharacterOverview = () => {
     await axios
       .get(`https://${region}.${blizzUrl}/profile/${urlParts}?namespace=${namespace}&locale=${locale}&access_token=${token.access_token}`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token.access_token}`,
         },
         redirect: 'follow',
       })
       .then((resp) => {
         setUserData(resp.data);
-        resp.data.pets.forEach((pet) => {
+        const pets = { ...resp.data.pets };
+        const petArray = [];
+        for (let i = 0; i < 3; i++) {
           wait(1000);
           axios
-            .get(`${pet.species.key.href}&locale=${locale}&access_token=${token.access_token}`)
+            .get(`${pets[i].species.key.href}&locale=${locale}&access_token=${token.access_token}`)
             .then((petResp) => {
-              // pets with images are not being set back into state, its returning null on console log
-              setPetsWithImages({ petsWithImages: [...petsWithImages, { ...pet.data, pet_image: petResp.data.icon }] });
+              petArray.push({ ...pets[i], pet_image: petResp.data.icon });
             })
             .catch(() => {
-              setPetsWithImages({ petsWithImages: [...petsWithImages, { ...pet.data, pet_image: null }] });
+              petArray.push({ ...pets[i], pet_image: null });
             });
-        });
+        }
+        setPetsWithImages(petArray);
       })
       .catch((err1) => console.log(err1.message));
   };
+
+  // need to look at using https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all for the above
+  // as although console logging shows me the array
+  // the length is returning as 0 due to async nature
 
   // const filterPets = () => {
   //   setFilteredPetList(userData.pets.filter((pet) => (pet.level === 25 && pet.quality.type === 'RARE')));
@@ -71,16 +78,17 @@ const CharacterOverview = () => {
     setToken(getAccessToken());
   }, []);
 
-  if (!petsWithImages) { return null; }
-  console.log(petsWithImages.length);
-
+  if (!userData) { return null; }
+  // console.log(Array.isArray(petsWithImages))
+  // console.log(petsWithImages)
+  console.log(Array.isArray(petsWithImages))
   return (
     <>
       <h1>Rare max level pets</h1>
-      {/* <ul>
+      <ul>
         {
           petsWithImages.map((pet) => {
-            console.log(pet);
+            console.log('p', pet);
             return (
               <li key={pet.id}>
                 {pet.species.name} - {pet.species.id}
@@ -93,7 +101,7 @@ const CharacterOverview = () => {
             );
           })
         }
-      </ul> */}
+      </ul>
     </>
   );
 };
